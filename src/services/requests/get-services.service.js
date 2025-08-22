@@ -1,10 +1,11 @@
-const { SERVICES_URL, API_AUTHORIZATION } = require('../../config/env')
+const { API_AUTHORIZATION } = require('../../config/env')
 const { DEFAULT_DATE_START, DEFAULT_DATE_END } = require('../../utils/dates')
+const { SERVICES_URL } = require('../../utils/urls');
 
 async function getServices({ date_start = DEFAULT_DATE_START, date_end = DEFAULT_DATE_END, company_id } = {}) {
-  if (!base) throw new Error('Variável de ambiente SERVICES_URL não definida.');
+  if (!SERVICES_URL) throw new Error('Variável de ambiente SERVICES_URL não definida.');
 
-  const url = new URL(process.env.SERVICES_URL);
+  const url = new URL(SERVICES_URL);
   url.searchParams.set('date_start', date_start);
   url.searchParams.set('date_end', date_end);
   url.searchParams.set('service', 'baixa_de_mei_dentro_de_6_meses');
