@@ -4,13 +4,16 @@ const { DATE_END_CERTIFICATE } = require('../../utils/dates');
 
 
 
-async function getCertificate({ certificateType } = {}) {
+async function getCertificate({ certificateType = 'A1', cnpj } = {}) {
     if(!CERTIFICATES_URL) throw new Error("Não foi encontrada a variável CERTIFICATES_URL no arquivo .env!");
     if(!API_AUTHORIZATION) throw new Error("Não foi encontrada a variável API_AUTHORIZATION no arquivo .env!");
     
     const url = new URL(process.env.CERTIFICATES_URL);
+    url.searchParams.set('cnpj', cnpj)
     url.searchParams.set('date_start', '01/01/2000');
     url.searchParams.set('date_end', DATE_END_CERTIFICATE);
+    url.searchParams.set()
+    
 
     
 

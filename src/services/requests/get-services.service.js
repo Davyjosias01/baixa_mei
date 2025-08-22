@@ -1,6 +1,7 @@
-const { API_AUTHORIZATION } = require('../../config/env')
-const { DEFAULT_DATE_START, DEFAULT_DATE_END } = require('../../utils/dates')
+const { API_AUTHORIZATION } = require('../../config/env');
+const { DEFAULT_DATE_START, DEFAULT_DATE_END } = require('../../utils/dates');
 const { SERVICES_URL } = require('../../utils/urls');
+const { getJson } = require('../../utils/http');
 
 async function getServices({ date_start = DEFAULT_DATE_START, date_end = DEFAULT_DATE_END, company_id } = {}) {
   if (!SERVICES_URL) throw new Error('Variável de ambiente SERVICES_URL não definida.');
@@ -13,10 +14,8 @@ async function getServices({ date_start = DEFAULT_DATE_START, date_end = DEFAULT
   url.searchParams.set('integrated_at', 'false');
   
   if (company_id) url.searchParams.set('company_id', company_id);
-  const res = await fetch(url, { headers: { Authorization: process.env.API_AUTHORIZATION, Accept: 'application/json' } });
-  
-  if (!res.ok) throw new Error(`GET ${url} -> ${res.status} ${res.statusText}`);
-  return await res.json();
+
+  return await getJson({url: url, headers: { Authorization: API_AUTHORIZATION, Accept: 'application/json' } });
 }
 
 module.exports = { getServices };
