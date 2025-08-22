@@ -1,4 +1,4 @@
-const { SERVICES_URL, API_AUTHORIZATION} = require('../../config/env')
+const { SERVICES_URL, API_AUTHORIZATION } = require('../../config/env')
 
 const TZ = 'America/Sao_Paulo';
 const ymd = d => new Intl.DateTimeFormat('en-CA').format(d);
