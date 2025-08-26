@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { execFileSync } = require('child_process');
 
-function installCertificate({pfxPath, pfxPwd, scope = 'CurrentUser'}){
+async function installCertificate({pfxPath, pfxPwd, scope = 'CurrentUser'}){
 
     if (!pfxPath || !pfxPwd) throw new Error('Defina a pasta de destino do certificado e a senha do mesmo');
 
