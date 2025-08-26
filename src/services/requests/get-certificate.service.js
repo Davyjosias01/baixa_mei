@@ -29,6 +29,7 @@ if (require.main === module) {
         try {
             const data = await getCertificate({cnpj: '46752607000129', destPath: 'C:\\Certificates\\certificado_importado.pfx'});
             console.log(data);
+        
         } catch (e) {
             console.log(e);
             process.exit(1);
