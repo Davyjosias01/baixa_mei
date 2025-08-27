@@ -9,7 +9,6 @@ async function getCompany({ cnpj, companyId, fields='cnpj' }) {
     url.searchParams.set('fields', fields );
     if (cnpj)url.searchParams.set('cnpj', cnpj);
     if (companyId)url.searchParams.set('company_id', companyId);
-
     return await getJson({ url: url, headers: { Authorization: API_AUTHORIZATION, Accept: 'application/json'} });
 }
 
