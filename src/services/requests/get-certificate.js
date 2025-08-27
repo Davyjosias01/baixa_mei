@@ -7,8 +7,8 @@ const path                      = require('node:path')
 
 
 async function getCertificate({ certificateType = 'E-CNPJ A1', hasProcuration, cnpj, destPath, } = {}) {
-    if(!CERTIFICATES_URL) throw new Error("Não foi encontrada a variável CERTIFICATES_URL no arquivo .env!");
-    if(!API_AUTHORIZATION) throw new Error("Não foi encontrada a variável API_AUTHORIZATION no arquivo .env!");
+    if(!CERTIFICATES_URL) throw new Error("Não foi encontrada a variável CERTIFICATES_URL.");
+    if(!API_AUTHORIZATION) throw new Error("Não foi encontrada a variável API_AUTHORIZATION.");
     if(!cnpj) throw new Error("É necessário que seja informado o CNPJ da empresa em questão.")
     if(!destPath) throw new Error("É necessário informar a pasta de destino do certificado.")    
     
@@ -30,8 +30,6 @@ async function getCertificate({ certificateType = 'E-CNPJ A1', hasProcuration, c
 async function getCertificateInformation({url}={}){
     console.log(url);
     const data = await getJson({url, headers: { Authorization: API_AUTHORIZATION, Accept: 'application/json' }});
-    console.log(data);
-
     return data;
 }
 

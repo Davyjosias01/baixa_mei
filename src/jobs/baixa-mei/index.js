@@ -13,7 +13,6 @@ async function run() {
     services = data?.company_services ?? [];
 
     for (const service of services){
-        console.log(service)
         closure_process({ service });
     }
 }
