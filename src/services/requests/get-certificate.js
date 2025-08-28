@@ -24,6 +24,9 @@ async function getCertificate({ certificateType = 'E-CNPJ A1', hasProcuration, c
     await fs.writeFile(destPath, buffer);
     data = await getCertificateInformation({url});
     info = data?.companies?.[0];
+    if(!info){
+        throw new Error('Empresa não possui certificado digital.')
+    }
     return info;
 }
 
